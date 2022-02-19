@@ -1,6 +1,11 @@
 import React from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import {useAuth0} from '@auth0/auth0-react';
+import LoginButton from "./login-button";
+import SignupButton from "./signup-button";
+import LogoutButton from "./logout-button";
+
 
 const MainNav = () => (
   <Nav className="mr-auto">
@@ -31,7 +36,15 @@ const MainNav = () => (
   </Nav>
 );
 
-const AuthNav = () => null;
+const AuthNav = () => {
+    const {isAuthenticated} = useAuth0;
+
+    return (
+        < Nav className = "justify-content-end">
+            {isAuthenticated ? <LogoutButton/> : <LoginButton/>}
+        </Nav>
+    );
+};
 
 const NavBar = () => {
   return (
@@ -40,6 +53,7 @@ const NavBar = () => {
         <Navbar.Brand as={RouterNavLink} className="logo" to="/" />
         <MainNav />
         <AuthNav />
+        
       </Container>
     </Navbar>
   );
