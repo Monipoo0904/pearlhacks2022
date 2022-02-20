@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import {useAuth0} from '@auth0/auth0-react';
-import LoginButton from "./login-button";
+import LoginButton from "./Login-button";
 import SignupButton from "./signup-button";
-import LogoutButton from "./logout-button";
+import LogoutButton from "./Logout-button";
 
 
 
@@ -14,7 +14,7 @@ const MainNav = () => {
     
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
           
-            <div className="container" id="nav" >
+            <div className="container" >
             <NavLink to="/" className="navbar-brand">Start</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

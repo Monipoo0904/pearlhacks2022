@@ -3,17 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {HashRouter}  from 'react-router-dom';
-import Auth0ProviderWithHistory from './auth0-provider-with-history';
+import {BrowserRouter}  from 'react-router-dom';
+// import Auth0ProviderWithHistory from './auth0-provider-with-history';
+import { Auth0Provider } from '@auth0/auth0-react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
+// const domain = process.env.REACT_APP_AUTH0_DOOMAIN;
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
 ReactDOM.render(
-<HashRouter>
-  <Auth0ProviderWithHistory>
+<BrowserRouter>
+  <Auth0Provider
+   domain="dev-hlbnx87q.us.auth0.com"
+   clientId="2WG6Q8ahWL8jspLDiddWyCtYLDRWlzCu"
+   redirectUri={window.location.origin}>
+
     <App />
-  </Auth0ProviderWithHistory>
-  </HashRouter>,
+  </Auth0Provider>
+ </BrowserRouter>,
+   
   document.getElementById('root')
 );
 
