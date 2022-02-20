@@ -1,11 +1,11 @@
-import './Home.css'
+import React from 'react';
 
-function Home(){
+
+const Home = () => {
     return (
-        <h1>Hello!</h1>
-    )
+      <p> This is about component! </p>
+    );
 }
-
-
+  
 
 export default Home;

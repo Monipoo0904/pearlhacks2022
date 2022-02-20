@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import {useAuth0} from '@auth0/auth0-react';
 import LoginButton from "./login-button";
@@ -7,34 +7,39 @@ import SignupButton from "./signup-button";
 import LogoutButton from "./logout-button";
 
 
-const MainNav = () => (
-  <Nav className="mr-auto">
-    <Nav.Link
-      as={RouterNavLink}
-      to="/"
-      exact
-      activeClassName="router-link-exact-active"
-    >
-      Home
-    </Nav.Link>
-    <Nav.Link
-      as={RouterNavLink}
-      to="/profile"
-      exact
-      activeClassName="router-link-exact-active"
-    >
-      Profile
-    </Nav.Link>
-    <Nav.Link
-      as={RouterNavLink}
-      to="/external-api"
-      exact
-      activeClassName="router-link-exact-active"
-    >
-      External API
-    </Nav.Link>
-  </Nav>
-);
+
+
+const MainNav = () => {
+    return(
+    
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+          
+            <div className="container" id="nav" >
+            <NavLink to="/" className="navbar-brand">Start</NavLink>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul className="navbar-nav ms-auto">
+                        <li className="navbar-item">
+                            <NavLink to="/" className="nav-link" aria-current="page">Home</NavLink>
+                        </li>
+                        <li className="navbar-item">
+                            <NavLink to="/talk" className="nav-link">Talk About It</NavLink>
+                        </li>
+                        <li className="navbar-item">
+                            <NavLink to="/profile" className="nav-link">Profile</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+       
+    );
+}
+  
+
+
 
 const AuthNav = () => {
     const {isAuthenticated} = useAuth0;
@@ -50,10 +55,9 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="md">
       <Container>
-        <Navbar.Brand as={RouterNavLink} className="logo" to="/" />
+        <Navbar.Brand className="logo" to="/" />
         <MainNav />
         <AuthNav />
-        
       </Container>
     </Navbar>
   );
